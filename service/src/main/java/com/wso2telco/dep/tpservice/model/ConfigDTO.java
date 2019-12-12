@@ -3,7 +3,6 @@ package com.wso2telco.dep.tpservice.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
-import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 
 import java.io.Serializable;
 
@@ -53,9 +52,6 @@ public class ConfigDTO extends Configuration implements Serializable{
 
 	@JsonProperty
 	private  String authType = "mail.smtp.auth";
-
-//	@JsonProperty("swagger")
-//	public SwaggerBundleConfiguration swaggerBundleConfiguration;
 
 	
 	public String getAuthType() {

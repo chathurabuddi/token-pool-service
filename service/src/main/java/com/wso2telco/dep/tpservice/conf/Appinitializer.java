@@ -29,8 +29,6 @@ import io.dropwizard.server.ServerFactory;
 import io.dropwizard.server.SimpleServerFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import io.federecio.dropwizard.swagger.SwaggerBundle;
-import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import io.federecio.dropwizard.swagger.SwaggerDropwizard;
 
 import java.util.ArrayList;
@@ -45,13 +43,7 @@ public class Appinitializer extends Application<ConfigDTO> {
 
 	@Override
 	public void initialize(Bootstrap<ConfigDTO> bootstrap) {
-//		bootstrap.addBundle(new SwaggerBundle<ConfigDTO>() {
-//			@Override
-//			protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(ConfigDTO configDTO) {
-//				return configDTO.swaggerBundleConfiguration;
-//			}
-//		});
-		swaggerDropwizard.initialize(bootstrap);
+		swaggerDropwizard.onInitialize(bootstrap);
 	}
 
 	@Override
