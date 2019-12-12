@@ -47,7 +47,7 @@ public class TokenPoolService {
 		// TODO: Implementation for HTTP GET request
 
 		try {
-			TokenPool pool = PoolFactory.getInstance().getManagager().getOwnerController(id).getTokenPool();
+			TokenPool pool = PoolFactory.getInstance().getManagager().getOwnerController(id.toLowerCase()).getTokenPool();
 			String token = pool.accqureToken().getAccessToken();
 			return Response.status(Response.Status.OK).entity(token).build();
 		} catch (TokenException e) {

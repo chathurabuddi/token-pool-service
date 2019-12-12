@@ -27,6 +27,9 @@ No need to install Maven if you install by downloading and extracting the binary
 
 MySQL Server’s time zone setting should be set to UTC time zone as ‘+00:00'
 
+`SET GLOBAL time_zone = '+00:00';` \
+`SELECT @@global.time_zone;`
+
 The database script relevant for this service can be found at /dbscripts folder.
 
 If the token pool Database is going to be set-up for the first time then refer the sql script with the name of baseline.sql
