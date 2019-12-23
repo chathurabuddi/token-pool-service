@@ -17,9 +17,11 @@
 package com.wso2telco.dep.tpservice.util.exception;
 
 public class TokenException extends BusinessException {
-	
+
 	/**
-	 * 
+	the serialVersionUID is a unique identifier for Serializable classes.
+	This is used during the deserialization of an object, to ensure that a loaded class is compatible with the serialized object.
+	If no matching class is found, an InvalidClassException is thrown.
 	 */
 	private static final long serialVersionUID = -55836217257748455L;
 

@@ -201,7 +201,7 @@ abstract class AbstrController implements TokenControllable{
 			@Override
 			public void run() {
 				try {
-					log.debug("sheduler started ");
+					log.debug("scheduler started ");
 					// remove the token
 					removeToken();
 					setNewToken(reGenarate());
@@ -209,7 +209,7 @@ abstract class AbstrController implements TokenControllable{
 
 
 				} catch (TokenException e) {
-					log.error("token sheudle expired - ", e);
+					log.error("token schedule expired - ", e);
 
 				}
 

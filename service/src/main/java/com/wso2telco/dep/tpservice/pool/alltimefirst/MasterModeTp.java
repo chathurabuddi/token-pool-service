@@ -36,7 +36,7 @@ class MasterModeTp extends AbstrController {
 	RetryConnectionDTO retryDTO;
 	RetryConnectionDAO retryDAO;
 	private  final String MAIL_BODY_CONNECTION_LOSS = "Token generation failed. Retry attempt :";
-	private final String MAIL_SUBJECT_CONNECTION_LOSS = "[Token Generation Failed]- Error occurd while connecting to ";
+	private final String MAIL_SUBJECT_CONNECTION_LOSS = "[Token Generation Failed]- Error occur while connecting to ";
 	
 	private  final String MAIL_BODY_INVALID_CREDENTIALS = "Token generation failed.\nInvalid Credentials in Token Auth -  ";
 	private final String MAIL_SUBJECT_INVALID_CREDENTIALS = "[Token Generation Failed]- Invalid Credentials in ";

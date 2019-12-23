@@ -16,6 +16,7 @@
 
 package com.wso2telco.dep.tpservice.pool.alltimefirst;
 
+import com.wso2telco.dep.tpservice.pool.TokenReGenarator;
 import org.slf4j.LoggerFactory;
 
 import com.wso2telco.dep.tpservice.model.ConfigDTO;
@@ -26,8 +27,9 @@ import com.wso2telco.dep.tpservice.util.exception.GenaralError;
 import com.wso2telco.dep.tpservice.util.exception.TokenException;
 
 class SlaveTokenPool extends AbstrController {
-	
-	
+
+	private TokenReGenarator regenarator;
+	private TokenDTO newlyGeneratedToken;
 	
 	protected SlaveTokenPool(WhoDTO whoDTO,TokenDTO tokenDTO) throws TokenException {
 		super(whoDTO,tokenDTO);
@@ -45,16 +47,17 @@ class SlaveTokenPool extends AbstrController {
 			int waitattempt =0;
 
 			//load configuration repeatedly until retry attempt expires or record found
-			while(configDto.getTokenReadretrAttempts() <= waitattempt){
-				newTokenDTO =tokenManager.loadNewChild(whoDTO, tokenDTO); //load token form db
+			while(configDto.getTokenReadretrAttempts() >= waitattempt){
+				newTokenDTO =tokenManager.loadNewChild(whoDTO, tokenDTO); //load token from db
 				if(newTokenDTO !=null){
 					break;
 				}
 				try {
-					Thread.sleep(configDto.getTokenReadretrAfter() );
+					Thread.sleep(configDto.getTokenReadretrAfter());
 				} catch (InterruptedException e) {
 					throw new TokenException(GenaralError.INTERNAL_SERVER_ERROR);
 				}
+				waitattempt++;
 			}
 			
 			if(newTokenDTO ==null){
@@ -66,5 +69,21 @@ class SlaveTokenPool extends AbstrController {
 			throw new TokenException(e.getErrorType());
 		}
 		return newTokenDTO; 
+	}
+
+	public TokenReGenarator getRegenarator() {
+		return regenarator;
+	}
+
+	public void setRegenarator(TokenReGenarator regenarator) {
+		this.regenarator = regenarator;
+	}
+
+	public TokenDTO getNewlyGeneratedToken() {
+		return newlyGeneratedToken;
+	}
+
+	public void setNewlyGeneratedToken(TokenDTO newlyGeneratedToken) {
+		this.newlyGeneratedToken = newlyGeneratedToken;
 	}
 }
